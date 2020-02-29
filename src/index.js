@@ -6,7 +6,7 @@ dotenv.config()
 
 const app = express()
 
-app.use(bodyparser.json())
+app.use(bodyParser.json())
 
 app.listen(process.env.PORT, () => {
   console.log("Server is listening on port " + process.env.PORT)
