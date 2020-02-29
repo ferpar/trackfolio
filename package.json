@@ -1,0 +1,14 @@
+{
+  "name": "trackfolio",
+  "version": "1.0.0",
+  "description": "application to keep track of currency portfolios",
+  "main": "index.js",
+  "scripts": {
+    "test": "tests"
+  },
+  "author": "Fernando Perez de Ayala",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
