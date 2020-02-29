@@ -4,7 +4,7 @@
   "description": "application to keep track of currency portfolios",
   "main": "index.js",
   "scripts": {
-    "test": "tests"
+    "dev": "nodemon --exec babel-node ./src/index.js"
   },
   "author": "Fernando Perez de Ayala",
   "license": "ISC",
