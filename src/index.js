@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
+import { notFound } from './controllers'
 import makeCallback from './express-callback'
 
 dotenv.config()
