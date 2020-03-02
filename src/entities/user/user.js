@@ -1,4 +1,4 @@
-export default function buildMakeUser () {
+export default function buildMakeUser ({ Id, md5 }) {
   return function makeUser ({
     createdOn = Date.now(),
     id,
@@ -15,7 +15,7 @@ export default function buildMakeUser () {
     })
     
     function makeHash () {
-      return
+      return md5(username + createOn)
     }
   }
 }
