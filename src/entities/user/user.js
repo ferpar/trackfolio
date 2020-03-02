@@ -1,4 +1,4 @@
-export default function buildMakeUser ({ Id, md5 }) {
+export default function buildMakeUser ({ Id, md5, encryptPassword }) {
   return function makeUser ({
     createdOn = Date.now(),
     id = Id.makeId(),
@@ -18,13 +18,17 @@ export default function buildMakeUser ({ Id, md5 }) {
     if (!password) {
       throw new Error('User must have a password')
     }
+
+    const hashedPassword = encryptPassword(password)
+
     return Object.freeze({
       getCreatedOn: () => createdOn,
       getId: () => id,
       getModifiedOn: () => modifiedOn,
-      getPassword: () => password,
+      getPassword: () => hashedPassword,
       getUsername: () => username
     })
+
     
     function makeHash () {
       return md5(username || '' + createdOn + id)

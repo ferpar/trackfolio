@@ -8,7 +8,7 @@ const userSchema = Schema({
   id: String,
   modifiedOn: Number,
   password: String,
-  usename: String
+  username: String
 });
 
 const User = connection.model("User", userSchema)
