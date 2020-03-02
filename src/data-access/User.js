@@ -4,14 +4,11 @@ const Schema = mongoose.Schema;
 let connection = mongoose.createConnection(process.env.DBURL)
 
 const userSchema = Schema({
+  createdOn: Number,
   id: String,
-  usename: String,
-  password: String
-}, {
-  timestamps: {
-    createdAt: "created_at",
-    updatedAt: "updated_at"
-  }
+  modifiedOn: Number,
+  password: String,
+  usename: String
 });
 
 const User = connection.model("User", userSchema)
