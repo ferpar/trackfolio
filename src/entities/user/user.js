@@ -27,7 +27,7 @@ export default function buildMakeUser ({ Id, md5 }) {
     })
     
     function makeHash () {
-      return md5(username + createOn)
+      return md5(username || '' + createdOn + id)
     }
   }
 }
