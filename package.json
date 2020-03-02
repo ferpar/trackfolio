@@ -9,6 +9,7 @@
   "author": "Fernando Perez de Ayala",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cuid": "^2.1.8",
     "express": "^4.17.1",
