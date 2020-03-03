@@ -3,6 +3,8 @@ import User from './User'
 
 export default function makeUsersDb() {
   return Object.freeze({
+    findById,
+    findByUsername,
     insert
   })
   async function findById({ id }) {
@@ -15,6 +17,7 @@ export default function makeUsersDb() {
   }
   async function insert ({ id: _id, ...commentInfo }) {
     User.save({ _id, ...commentInfo})
+    .catch(err => { console.error("[Data-Accessor] error saving user to DB", err)})
     return { id, ...commentInfo}
   }
   //TODO: findByHash

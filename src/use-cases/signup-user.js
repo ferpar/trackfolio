@@ -1,10 +1,13 @@
 import makeUser from '../entities/user'
 export default function makeSignupUser ({ usersDb }) {
   return async function signupUser(userInfo) {
-    const exists = usersDb.findByUsername(userInfo.username)
+    console.log("signUpUser usecase")
+    console.log(userInfo)
+    const exists = await usersDb.findByUsername(userInfo)
     if (exists) { 
       return exists 
     }
+    console.log("gets this far")
     const user = makeUser(userInfo)
       .catch(err => console.error("error creating user entity", err))
     return await usersDb.insert({
