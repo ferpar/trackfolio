@@ -16,7 +16,7 @@ export default function makePostUSer ({signUpUser}) {
           'Last-Modified': new Date(posted.modifiedOn).toUTCString()
         },
         statusCode: 201,
-        body: { posted }
+        body: { ...posted }
       }
     } catch (err) {
       console.error("[Controller] Error on user signup", err)
