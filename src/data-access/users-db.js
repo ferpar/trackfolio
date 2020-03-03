@@ -16,11 +16,9 @@ export default function makeUsersDb() {
     return foundUser
   }
   async function insert ({ id, ...commentInfo }) {
-    console.log(commentInfo)
-    console.log(id)
     await User.create({ id, ...commentInfo})
     .catch(err => { console.error("[Data-Accessor] error saving user to DB", err)})
-    return { id, ...commentInfo}
+    return { id, ...commentInfo} //TODO return from the DB; check if overriding _id is possible
   }
   //TODO: findByHash
 }

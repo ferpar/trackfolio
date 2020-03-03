@@ -5,6 +5,7 @@ export default function makeSignupUser ({ usersDb }) {
     if (exists) { 
       return exists 
     }
+    //TODO bring passwordEncryption from the entity
     const user = makeUser(userInfo)
     return await usersDb.insert({
       createdOn: user.getCreatedOn(),
