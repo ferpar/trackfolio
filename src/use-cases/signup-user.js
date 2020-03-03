@@ -7,9 +7,7 @@ export default function makeSignupUser ({ usersDb }) {
     if (exists) { 
       return exists 
     }
-    console.log("gets this far")
     const user = makeUser(userInfo)
-      .catch(err => console.error("error creating user entity", err))
     return await usersDb.insert({
       createdOn: user.getCreatedOn(),
       id: user.getId(),

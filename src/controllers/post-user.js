@@ -8,10 +8,7 @@ export default function makePostUSer ({signUpUser}) {
         source.referrer = httpRequest.headers['Referer']
       }
 
-      console.log(userInfo)
-
-      const posted = await signUpUser({...userInfo})
-      console.log(posted)
+      const posted = await signUpUser({...userInfo.body})
 
       return {
         headers: {

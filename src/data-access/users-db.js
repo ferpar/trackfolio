@@ -1,5 +1,5 @@
 import Id from '../Id'
-import User from './User'
+import User from './User.js'
 
 export default function makeUsersDb() {
   return Object.freeze({
@@ -16,7 +16,7 @@ export default function makeUsersDb() {
     return foundUser
   }
   async function insert ({ id: _id, ...commentInfo }) {
-    User.save({ _id, ...commentInfo})
+    await User.create({ _id, ...commentInfo})
     .catch(err => { console.error("[Data-Accessor] error saving user to DB", err)})
     return { id, ...commentInfo}
   }
