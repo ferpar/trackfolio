@@ -15,8 +15,10 @@ export default function makeUsersDb() {
     const foundUser = await User.findOne({username})
     return foundUser
   }
-  async function insert ({ id: _id, ...commentInfo }) {
-    await User.create({ _id, ...commentInfo})
+  async function insert ({ id, ...commentInfo }) {
+    console.log(commentInfo)
+    console.log(id)
+    await User.create({ id, ...commentInfo})
     .catch(err => { console.error("[Data-Accessor] error saving user to DB", err)})
     return { id, ...commentInfo}
   }
