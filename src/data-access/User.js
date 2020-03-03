@@ -9,6 +9,7 @@ let connection = mongoose.createConnection(process.env.DBURL)
 
 const userSchema = Schema({
   createdOn: Number,
+  hash: String,
   id: String,
   modifiedOn: Number,
   password: String,
