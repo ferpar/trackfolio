@@ -5,7 +5,12 @@ dotenv.config()
 
 const Schema = mongoose.Schema;
 
-let connection = mongoose.createConnection(process.env.DBURL)
+const connectionOpts = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}
+
+let connection = mongoose.createConnection(process.env.DBURL, connectionOpts)
 
 const userSchema = Schema({
   createdOn: Number,
