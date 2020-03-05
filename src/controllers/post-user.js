@@ -1,4 +1,4 @@
-export default function makePostUSer ({signUpUser}) {
+export default function makePostUser ({signUpUser}) {
   return async function postUser(httpRequest) {
     try {
       const { source = {}, ...userInfo } = httpRequest
@@ -8,16 +8,27 @@ export default function makePostUSer ({signUpUser}) {
         source.referrer = httpRequest.headers['Referer']
       }
 
-      const posted = await signUpUser({...userInfo.body})
+      const signUpQuery = await signUpUser({...userInfo.body})
+
+      if (signUpQuery.conflict) {
+        return { 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          statusCode: 409,
+          body: signUpQuery
+        }
+      }
 
       return {
         headers: {
           'Content-Type': 'application/json',
-          'Last-Modified': new Date(posted.modifiedOn).toUTCString()
+          'Last-Modified': new Date(signUpQuery.modifiedOn).toUTCString()
         },
         statusCode: 201,
-        body: { ...posted._doc }
+        body: signUpQuery
       }
+
     } catch (err) {
       console.error("[Controller] Error on user signup", err)
 
