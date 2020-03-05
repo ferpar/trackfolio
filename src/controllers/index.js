@@ -1,3 +1,7 @@
+import { signUpUser } from '../use-cases'
 import notFound from './not-found'
+import makePostUser from './post-user'
 
-export { notFound }
+const postUser = makePostUser({ signUpUser })
+
+export { notFound, postUser }
