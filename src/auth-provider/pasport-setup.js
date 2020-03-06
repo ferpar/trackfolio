@@ -1,5 +1,7 @@
-export default function makePassportSetup({ usersDb, passport, LocalStrategy, bcrypt }) {
+export default function makePassportSetup({ usersDb, sessionSetup, passport, LocalStrategy, bcrypt }) {
   return async function passportSetup( server ) {
+
+    sessionSetup(server)
 
     const passwordStrat = new LocalStrategy(
       {

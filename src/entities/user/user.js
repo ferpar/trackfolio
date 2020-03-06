@@ -1,4 +1,4 @@
-export default function buildMakeUser ({ Id, md5, encryptPassword }) {
+export default function buildMakeUser ({ Id, md5 }) {
   return function makeUser ({
     createdOn = Date.now(),
     id = Id.makeId(),
