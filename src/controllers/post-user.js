@@ -30,7 +30,7 @@ export default function makePostUser ({signUpUser}) {
       }
 
     } catch (err) {
-      console.error("[Controller] Error on user signup", err)
+      console.error("[Controller] Error on user signup ", err)
 
       return {
         headers: {
