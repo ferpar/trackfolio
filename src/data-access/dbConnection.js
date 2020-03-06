@@ -1,5 +1,5 @@
 export default function makeDbConnector({mongoose}) {
-  return async function connectToDB() {
+  return async function connectToDb() {
 
     const connectionOpts = {
       useNewUrlParser: true,
