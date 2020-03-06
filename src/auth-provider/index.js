@@ -5,7 +5,7 @@ const LocalStrategy = passportLocal.Strategy
 import { usersDb } from '../data-access'
 
 import makeSessionSetup from './session-setup'
-import makePassportSetup from './pasport-setup'
+import makePassportSetup from './passport-setup'
 
 const sessionSetup = makeSessionSetup()
 const authSetup = makePassportSetup({ usersDb, sessionSetup, passport, LocalStrategy, bcrypt}) 

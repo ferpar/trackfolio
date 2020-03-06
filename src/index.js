@@ -7,17 +7,17 @@ import { authSetup } from './auth-provider'
 
 dotenv.config()
 
-const app = express()
+const server = express()
 
-app.use(bodyParser.json())
+server.use(bodyParser.json())
 
-authSetup(app)
+authSetup(server)
 
 const apiRoot = process.env.APIROOT
 
-app.post(`${apiRoot}/user`, makeCallback(postUser))
-app.use(makeCallback(notFound))
+server.post(`${apiRoot}/user`, makeCallback(postUser))
+server.use(makeCallback(notFound))
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log("Server is listening on port " + process.env.PORT)
 })
