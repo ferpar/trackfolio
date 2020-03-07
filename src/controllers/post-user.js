@@ -1,5 +1,5 @@
-export default function makePostUser ({signUpUser}) {
-  return async function postUser(httpRequest) {
+export default function makeSginUpCont ({signupProvider}) {
+  return async function signupCont(httpRequest) {
     try {
       const { source = {}, ...userInfo } = httpRequest
       source.ip = httpRequest.ip
@@ -8,7 +8,7 @@ export default function makePostUser ({signUpUser}) {
         source.referrer = httpRequest.headers['Referer']
       }
 
-      const signUpQuery = await signUpUser({...userInfo.body})
+      const signUpQuery = await signupProvider({...userInfo.body})
 
       if (signUpQuery.conflict) {
         return { 

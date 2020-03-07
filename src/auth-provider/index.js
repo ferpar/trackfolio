@@ -6,7 +6,8 @@ import { usersDb } from "../data-storage";
 
 import makeSessionSetup from "./session-setup";
 import makePassportSetup from "./passport-setup";
-import makeSignupUser from "./signup-user";
+import makeSignupProvider from "./signup-user";
+import makeLoginProvider from './login.js';
 
 const sessionSetup = makeSessionSetup();
 const authSetup = makePassportSetup({
@@ -17,9 +18,11 @@ const authSetup = makePassportSetup({
   bcrypt
 });
 
-const signUpUser = makeSignupUser({ usersDb, encryptPassword });
+const signupProvider = makeSignupProvider({ usersDb, encryptPassword });
+const loginProvider = makeLoginProvider({ passport })
 
-export { authSetup, signUpUser };
+export { authSetup, signupProvider, loginProvider };
+
 
 function encryptPassword(password) {
   const saltRounds = 10;

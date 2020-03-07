@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import { notFound, postUser } from "./controllers";
+import { notFound, signupCont, loginCont } from "./controllers";
 import makeCallback from "./express-callback";
 import { authSetup } from "./auth-provider";
 import { connectToDb } from "./data-storage";
@@ -18,7 +18,8 @@ authSetup(server);
 
 const apiRoot = process.env.APIROOT;
 
-server.post(`${apiRoot}/user`, makeCallback(postUser));
+server.post(`${apiRoot}/signup`, makeCallback(signupCont));
+server.post(`${apiRoot}/login`, makeCallback(loginCont));
 server.use(makeCallback(notFound));
 
 server.listen(process.env.PORT, () => {

@@ -1,7 +1,9 @@
-import { signUpUser } from '../auth-provider'
+import { signupProvider, loginProvider } from '../auth-provider'
 import notFound from './not-found'
-import makePostUser from './post-user'
+import makeSignupCont from './post-user'
+import makeLoginCont from './login.js'
 
-const postUser = makePostUser({ signUpUser })
+const signupCont = makeSignupCont({ signupProvider })
+const loginCont = makeLoginCont({ loginProvider })
 
-export { notFound, postUser }
+export { notFound, signupCont, loginCont }

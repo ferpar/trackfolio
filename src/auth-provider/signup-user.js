@@ -1,6 +1,6 @@
 import makeUser from '../entities/user'
-export default function makeSignupUser ({ usersDb, encryptPassword }) {
-  return async function signupUser(userInfo) {
+export default function makeSignupProvider ({ usersDb, encryptPassword }) {
+  return async function signupProvider(userInfo) {
 
     const exists = await usersDb.findByUsername(userInfo)
     if (exists) { 
