@@ -1,15 +1,16 @@
 export default function makePassportSetup({ usersDb, sessionSetup, passport, LocalStrategy, bcrypt }) {
   return async function passportSetup( server ) {
 
-    sessionSetup(server)
+    await sessionSetup(server)
 
-    const passwordStrat = new LocalStrategy(
+    const passwordStrat = await new LocalStrategy(
       {
         usernameField: "username",
         passwordField: "password"
       },
       async (username, password, done) => {
-        const foundUser = await usersDb.findByUsername( username )
+        console.log("STRATEGY")
+        const foundUser = await usersDb.findByUsername( {username} )
         if (!foundUser) {
           done(null, false, { message: "user not found"})
         }

@@ -4,7 +4,7 @@ export default function makeLoginProvider ({passport}) {
     let returnValue;
     await passport.authenticate(
       'user-local',
-      returnValue = async (err, foundUser, failureDetails) => {
+      async (err, foundUser, failureDetails) => {
         if (err) {
           console.error("[AuthProvider] error on passport authentication process ", err)
           returnValue = {
@@ -25,7 +25,7 @@ export default function makeLoginProvider ({passport}) {
           })
         }
       }
-    )
+    )(req)
     return returnValue
   }
 }

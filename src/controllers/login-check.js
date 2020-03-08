@@ -1,29 +1,26 @@
-export default function makeLoginCont ({loginProvider}) {
-  return async function loginCont(httpRequest) {
+export default function makeLoggedInCont ({ loggedInProvider}) {
+  return async function loggedInCont(httpRequest) {
     try {
-      console.log(httpRequest.session)
-      const loginQuery = await loginProvider(httpRequest) 
-      const { message = undefined, error = undefined} = loginQuery
+      const loggedInQuery = await loggedInProvider(httpRequest)
+      const { message = undefined } = loggedInQuery
 
-      if (message || error) {
+      if( message ) {
         return {
           headers: {
             'Content-Type': 'application/json'
           },
-          statusCode: message ? 401 : 500,
-          body: {
-            message: message ? message : error
-          }
+          statusCode: 401,
+          body: { message }
         }
       }
 
       return {
         headers:{
           'Content-Type': 'application/json',
-          'Last-Modified': new Date(loginQuery.modifiedOn).toUTCString()
+          'Last-Modified': new Date(loggedInQuery.modifiedOn).toUTCString()
         },
         statusCode: 200,
-        body: { ...loginQuery }
+        body: loggedInQuery
       }
 
     } catch (err) {

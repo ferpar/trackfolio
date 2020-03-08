@@ -1,12 +1,23 @@
 module.exports = function makeExpressCallback(controller) {
   return (req, res) => {
     const httpRequest = {
-      ...req,
+      body: req.body,
+      query: req.query,
+      params: req.params,
+      ip: req.ip,
+      method: req.mehtod,
+      path: req.path,
       headers: {
         'Content-Type': req.get('Content-Type'),
         Referer: req.get('Referer'),
         'User-Agent': req.get('User-Agent')
-      }
+      },
+      isAuthenticated: req.isAuthenticated,
+      isUnauthenticated: req.isUnauthenticated,
+      login: req.login,
+      logout: req.logout,
+      session: req.session,
+      user: req.user
     }
     controller(httpRequest)
       .then(httpResponse => {
